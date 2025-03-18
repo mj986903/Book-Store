@@ -1,4 +1,4 @@
-package com.api.book_store;
+package com.api.book_store.config;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import static org.springframework.security.config.Customizer.withDefaults;

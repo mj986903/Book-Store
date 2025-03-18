@@ -13,5 +13,5 @@ public interface BookDao extends JpaRepository<Book,Integer> {
     Book findByTitleIgnoreCase(String title);
 
     @Query(value = "SELECT * FROM Book LIMIT :take OFFSET :skip",nativeQuery = true)
-    List<Book> getAllBooksWithPagination(int skip,int take);
+    List<Book> getAllBooks(int skip,int take);
 }

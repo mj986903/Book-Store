@@ -1,6 +1,8 @@
 package com.api.book_store.controller;
 
 import com.api.book_store.model.Book;
+import com.api.book_store.model.BookRequest;
+import com.api.book_store.model.BooksResponse;
 import com.api.book_store.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,17 +18,12 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping("allBooks")
-    public ResponseEntity<List<Book>> getAllBooks(){
-        return bookService.getAllBooks();
-    }
-
-    @GetMapping("allBooksWithPagination")
-    public ResponseEntity<List<Book>> getAllBooksWithPagination(@RequestParam int currentPage,@RequestParam int rowsPerPage){
-        return bookService.getAllBooksWithPagination(currentPage,rowsPerPage);
+    public ResponseEntity<BooksResponse> getAllBooks(@RequestParam int currentPage, @RequestParam int rowsPerPage){
+        return bookService.getAllBooks(currentPage,rowsPerPage);
     }
 
     @PostMapping("addBook")
-    public ResponseEntity<String> addBook(@RequestBody Book book){
+    public ResponseEntity<String> addBook(@RequestBody BookRequest book){
         return bookService.addBook(book);
     }
 
@@ -40,9 +37,9 @@ public class BookController {
         return  bookService.searchBook(title);
     }
 
-    @PutMapping("updateBook")
-    public ResponseEntity<String> updateBook(@RequestBody Book book){
-        return bookService.updateBook(book);
+    @PutMapping("updateBook/{bookId}")
+    public ResponseEntity<String> updateBook(@PathVariable int bookId,@RequestBody BookRequest book){
+        return bookService.updateBook(bookId,book);
     }
 
     @DeleteMapping("deleteBook/{bookId}")
