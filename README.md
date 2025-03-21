@@ -20,10 +20,9 @@ Follow the steps below to set up and run the Book Store API locally.
     * API Base URL: http://localhost:8080/book-store
 
 6. API Endpoints :
-    * GET /allBooks -> List all books
-    * GET /allBooksWithPagination -> List all books with pagination
-    * GET /getBook/{id} -> Get book by id
-    * GET /searchBook -> Search book by title
-    * POST /addBook -> Add new book
-    * PUT /updateBook -> Update or add book
-    * DELETE /deleteBook/{id} -> Delete book by id
+   * GET    /allBooks?currentPage={page}&rowsPerPage={rows} -> List all books with pagination  
+   * POST   /addBook                                       -> Add a new book  
+   * GET    /getBook/{bookId}                              -> Get book by ID  
+   * GET    /searchBook?title={title}                      -> Search book by title  
+   * PUT    /updateBook/{bookId}                           -> Update book by ID  
+   * DELETE /deleteBook/{bookId}                           -> Delete book by ID  
